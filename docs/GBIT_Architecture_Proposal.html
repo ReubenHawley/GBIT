@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="GBIT — Graph-Based Impact Testing: language-agnostic architecture proposal, acceptance criteria, plugin contracts and implementation roadmap.">
+<title>GBIT — Graph-Based Impact Testing | Architecture Proposal v0.1</title>
+<style>
+:root{--ink:#15243d;--muted:#66748b;--blue:#2563eb;--blueDark:#173e93;--line:#e3eaf3;--bg:#f5f7fb;--white:#fff;--navy:#101f38;--green:#177d64;--amber:#aa671c;--code:#14243d;--shadow:0 12px 45px rgba(18,42,86,.075)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}a{color:var(--blueDark);text-decoration:none}a:hover{text-decoration:underline}p{margin:0 0 16px}h1,h2,h3,h4{line-height:1.2;letter-spacing:-.025em}h1{font-size:clamp(37px,5vw,60px);margin:14px 0 12px}h2{font-size:28px;margin:0 0 19px}h3{font-size:19px;margin:29px 0 12px}h4{font-size:15px;margin:22px 0 9px}strong{font-weight:700}ul,ol{padding-left:24px;margin:8px 0 17px}li{padding-bottom:4px}code,pre{font-family:"Cascadia Code",Consolas,"SFMono-Regular",monospace;font-size:13px}code:not(pre code){color:#1246a0;background:#edf3ff;border-radius:4px;padding:1px 5px}pre{background:var(--code);color:#d7e6ff;border-radius:12px;padding:20px 22px;overflow:auto;line-height:1.65;margin:13px 0 22px}pre code{color:inherit}.shell{max-width:1480px;margin:auto;display:grid;grid-template-columns:254px minmax(0,1fr);gap:0}.sidebar{height:100vh;position:sticky;top:0;padding:34px 19px 26px 25px;border-right:1px solid var(--line);background:#fff;overflow:auto}.mark{display:flex;align-items:center;gap:11px;margin-bottom:38px}.markicon{width:40px;height:40px;background:#1c56d9;color:white;border-radius:11px;display:grid;place-items:center;font-size:17px;font-weight:800;letter-spacing:-1px}.markname{font-size:20px;font-weight:850;letter-spacing:-.04em}.eyebrow{color:var(--blue);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}.toc-label{font-size:11px;text-transform:uppercase;color:#8995a5;letter-spacing:.11em;font-weight:800;margin:21px 0 11px}.toc a{color:#50617b;display:block;border-radius:8px;padding:8px 11px;font-size:12.5px;line-height:1.3;margin:2px 0}.toc a:hover,.toc a.active{background:#eef4ff;color:#154ba6;text-decoration:none}.sidefoot{border-top:1px solid var(--line);margin-top:28px;padding-top:20px;color:#8491a3;font-size:11px}.content{max-width:1150px;width:100%;margin:0 auto;padding:34px 52px 90px}.hero{background:linear-gradient(126deg,#11253f 0%,#173a68 55%,#1556b6 150%);border-radius:20px;color:white;padding:48px 52px 39px;margin-bottom:30px;position:relative;overflow:hidden}.hero:after{content:"";width:400px;height:400px;position:absolute;border:1px solid rgba(255,255,255,.14);border-radius:50%;right:-230px;top:-200px;box-shadow:0 0 0 80px rgba(255,255,255,.028),0 0 0 160px rgba(255,255,255,.018)}.hero .eyebrow{color:#90c3ff}.hero p{max-width:780px;color:#d9e6fa;font-size:16px;margin:0}.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:25px}.tag{font-size:11px;font-weight:650;border:1px solid rgba(198,220,255,.38);background:rgba(255,255,255,.06);border-radius:99px;padding:5px 12px;color:#e0edff}.meta{display:flex;justify-content:space-between;gap:15px;color:#9bb7dc;margin-top:31px;border-top:1px solid rgba(255,255,255,.16);padding-top:18px;font-size:12px}.section{background:#fff;border:1px solid var(--line);border-radius:16px;padding:39px 43px;margin:23px 0;box-shadow:var(--shadow);scroll-margin-top:24px}.section-head{display:flex;align-items:center;gap:12px;margin-bottom:24px}.secno{width:32px;height:32px;background:#eaf2ff;color:#1e56ac;border-radius:8px;display:grid;place-items:center;font-size:13px;font-weight:850;flex-shrink:0}.section-head h2{margin:0}.lead{font-size:16px;line-height:1.8;color:#334761}.callout{padding:18px 21px;border:1px solid #d7e7ff;border-left:4px solid var(--blue);background:#f6faff;border-radius:8px;margin:22px 0;color:#24446e}.callout.important{border-color:#f1dfc0;border-left-color:#c98729;background:#fffbf4;color:#70450f}.callout.success{border-color:#d0eadf;border-left-color:#24906e;background:#f4fcf8;color:#195d48}.metricgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:24px 0}.metric{padding:18px;background:#f4f7fc;border:1px solid var(--line);border-radius:12px}.metric span{display:block;color:#69809e;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}.metric strong{display:block;font-size:23px;color:#1f457b;margin:3px 0 4px}.metric small{color:#748298;font-size:11px;line-height:1.5;display:block}.tablewrap{overflow:auto;margin:18px 0 24px;border:1px solid var(--line);border-radius:11px}table{border-collapse:collapse;width:100%;min-width:590px;font-size:13px;line-height:1.52}thead{background:#eff4fb}th{text-align:left;color:#243a57;font-weight:750;padding:12px 14px;border-bottom:1px solid #dce5f0}td{vertical-align:top;padding:12px 14px;border-top:1px solid #edf0f5;color:#465671}tbody tr:nth-child(2n){background:#fcfdff}td:first-child{color:#183557;font-weight:620}td code{font-size:12px}.fig{border:1px solid var(--line);border-radius:13px;background:#fbfdff;padding:18px 15px 16px;margin:22px 0}.fighead{font-size:11px;text-transform:uppercase;font-weight:850;letter-spacing:.1em;color:#68809f;margin:0 0 13px 4px}.fig svg{width:100%;height:auto;display:block}.figcaption{font-size:11px;color:#71809a;margin:9px 4px 0}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:19px 0}.card{background:#f7f9fd;border:1px solid var(--line);padding:17px 20px;border-radius:11px}.card strong{display:block;margin-bottom:4px;color:#213c61}.card p{margin:0;color:#5c6d83;font-size:13px}.flowrow{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:16px 0}.pill{background:#eaf2ff;border:1px solid #cfe1ff;border-radius:9px;padding:7px 11px;color:#174b9f;font-size:12px;font-weight:700}.arrow{color:#8b9db2;font-weight:800}.phase{display:grid;grid-template-columns:45px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--line)}.phase:first-child{border:0}.phase-num{display:grid;place-items:center;width:40px;height:40px;background:#eaf2ff;color:#1b53a6;border-radius:10px;font-weight:850}.phase h4{margin:0 0 5px;font-size:15px}.phase p{margin:0 0 8px;color:#60718b}.phase .exit{font-size:12px;color:#245e50;background:#f1faf6;padding:10px 13px;border-left:3px solid #24a17a;border-radius:5px}details{border:1px solid var(--line);border-radius:10px;padding:0 15px;margin:12px 0}summary{padding:13px 0;cursor:pointer;font-weight:700;color:#345273}details pre{margin-top:0}.ref{font-size:12px;color:#6a7992}.ref a{overflow-wrap:anywhere}.footnote{color:#79879d;font-size:12px;margin-top:30px;padding-top:18px;border-top:1px solid var(--line)}.check{color:#168466;font-weight:800}.printbtn{display:block;text-align:center;background:#e9f2ff;color:#164da1;border:1px solid #cbdffd;padding:11px;border-radius:9px;font-weight:750;font-size:12px;cursor:pointer;width:100%;margin:22px 0}.printbtn:hover{background:#dceaff}.skip{position:absolute;left:-9999px}.skip:focus{position:fixed;top:10px;left:10px;background:white;padding:10px;z-index:50}
+@media(max-width:1100px){.content{padding:28px 30px 70px}.section{padding:30px 30px}.sidebar{padding-left:17px}.shell{grid-template-columns:220px 1fr}.hero{padding:38px}}
+@media(max-width:750px){.shell{display:block}.sidebar{position:relative;height:auto;padding:15px 20px}.mark{margin-bottom:0}.toc,.toc-label,.sidefoot{display:none}.printbtn{display:none}.content{padding:12px 13px 35px}.hero{border-radius:13px;padding:29px 23px}.hero .meta{flex-direction:column;margin-top:23px}.section{border-radius:12px;padding:27px 20px;margin:14px 0}.section-head{align-items:flex-start}.section-head h2{font-size:24px}.metricgrid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.fig{padding:9px 5px}.flowrow{gap:5px}}
+@media print{*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}body{font-size:10.5pt;background:#fff}.shell{display:block}.sidebar,.printbtn{display:none!important}.content{max-width:none;padding:0}.hero{border-radius:0;margin:0 0 15px;padding:30px 34px;background:#142a4c}.section{margin:0;padding:24px 30px;border:0;border-bottom:1px solid #dce5f0;box-shadow:none;border-radius:0;break-inside:auto}.section-head h2{font-size:22px}h3{font-size:16px;break-after:avoid}.tablewrap,.fig,pre,.card,.phase{break-inside:avoid}.tablewrap{overflow:visible}table{font-size:9.25pt}td,th{padding:7px 9px}.metricgrid{grid-template-columns:repeat(3,1fr)}pre{white-space:pre-wrap;overflow:visible;word-break:break-word}a{color:inherit;text-decoration:none}.tags{margin-top:12px}.hero h1{font-size:35px} .hero p{font-size:12px} .fig svg{max-height:540px}}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+<div class="shell">
+<aside class="sidebar" aria-label="Document navigation">
+  <div class="mark"><div class="markicon">G</div><div><div class="markname">GBIT</div><div class="eyebrow">Architecture v0.1</div></div></div>
+  <div class="toc-label">Contents</div>
+  <nav class="toc">
+   <a href="#executive">Executive overview</a>
+   <a href="#acceptance">01 · Acceptance criteria</a>
+   <a href="#architecture">02 · System architecture</a>
+   <a href="#graph">03 · Graph model</a>
+   <a href="#plugins">04 · Plugin architecture</a>
+   <a href="#selection">05 · Selection engine</a>
+   <a href="#correctness">06 · Correctness &amp; evidence</a>
+   <a href="#persistence">07 · Persistence &amp; scalability</a>
+   <a href="#experience">08 · Developer experience</a>
+   <a href="#roadmap">09 · Implementation roadmap</a>
+   <a href="#technology">10 · Technology decisions</a>
+   <a href="#positioning">11 · Differentiation</a>
+   <a href="#decisions">12 · Architectural decisions</a>
+   <a href="#sources">References</a>
+  </nav>
+  <button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+  <div class="sidefoot">Self-contained HTML document<br>Works offline · Responsive · Print-friendly</div>
+</aside>
+<main id="main" class="content">
+<header class="hero" id="executive">
+ <div class="eyebrow">Technical Architecture Proposal · Version 0.1</div>
+ <h1>Graph-Based<br>Impact Testing</h1>
+ <p>A language-agnostic, plugin-driven verification engine that maps code and behavioral dependencies to relevant tests—reducing unnecessary CI execution while preserving explainable, conservative regression detection.</p>
+ <div class="tags"><span class="tag">Language agnostic</span><span class="tag">Dependency graph</span><span class="tag">Plugin architecture</span><span class="tag">CI native</span><span class="tag">Test-first design</span></div>
+ <div class="meta"><span>Document: GBIT Architecture Proposal</span><span>7 November 2026 · Draft for technical review</span></div>
+</header>
+<section class="section">
+ <h2>Executive overview</h2>
+ <p class="lead"><strong>GBIT is a verification orchestration engine—not a replacement for existing test frameworks.</strong> It determines the impacted test set after a change using typed, versioned dependency relationships, then delegates execution to existing runners such as xUnit, pytest, Jest, and JUnit.</p>
+ <div class="callout"><strong>Design principle:</strong> Every change has an impact surface. Every test provides evidence about some portion of that surface. GBIT links the two, selects relevant tests, and explains why the selection is appropriate.</div>
+ <div class="metricgrid">
+  <div class="metric"><span>High confidence</span><strong>Feasibility</strong><small>Language-neutral graph kernel and pluggable analyzers/runners are achievable.</small></div>
+  <div class="metric"><span>Medium confidence</span><strong>Efficiency</strong><small>Large CI savings are plausible, but vary with graph density and test-suite structure.</small></div>
+  <div class="metric"><span>Major uncertainty</span><strong>Completeness</strong><small>Dynamic calls, generated code, distributed state, and unknown dependencies require safe fallback.</small></div>
+ </div>
+ <p>The architecture prioritizes correctness over optimization. An unknown dependency expands the selected set; it does not justify excluding tests. Continuous shadow-mode validation is used to discover missed relationships.</p>
+</section>
+<section class="section" id="acceptance">
+ <div class="section-head"><span class="secno">01</span><h2>Acceptance criteria</h2></div>
+ <p>Success must be defined before implementation. The fundamental quality target is <strong>regression detection equivalence</strong>—a selected test set should detect the failures the full suite would have detected, within the stated evidence and safety policy.</p>
+ <h3>1.1 Functional acceptance criteria</h3>
+ <div class="tablewrap"><table><thead><tr><th>ID</th><th>Requirement</th><th>Acceptance condition</th></tr></thead><tbody>
+ <tr><td>AC-01</td><td>Language independence</td><td>The core has no language-specific analysis or compilation logic.</td></tr>
+ <tr><td>AC-02</td><td>Automatic discovery</td><td>Plugins discover source files, projects, symbols, tests, and runnable units.</td></tr>
+ <tr><td>AC-03</td><td>Relationship mapping</td><td>Typed, directed dependencies link code, tests, contracts, and runtime resources.</td></tr>
+ <tr><td>AC-04</td><td>Change detection</td><td>Added, modified, deleted, moved, and renamed artifacts are recognized.</td></tr>
+ <tr><td>AC-05</td><td>Transitive impact</td><td>Indirectly affected tests are found by graph traversal.</td></tr>
+ <tr><td>AC-06</td><td>Precise selection</td><td>Unrelated tests are excluded only when sufficient evidence supports exclusion.</td></tr>
+ <tr><td>AC-07</td><td>Plugin extensibility</td><td>New languages and runners can be installed without changing the core.</td></tr>
+ <tr><td>AC-08</td><td>Incremental updates</td><td>Only changed artifacts and necessary dependents are reanalyzed.</td></tr>
+ <tr><td>AC-09</td><td>Explainability</td><td>Selection and exclusion decisions include traceable supporting evidence.</td></tr>
+ <tr><td>AC-10</td><td>Safe fallback</td><td>Unknown relationships trigger conservative selection expansion.</td></tr>
+ <tr><td>AC-11</td><td>CI compatibility</td><td>GitHub Actions, Azure DevOps, GitLab CI, and local CLI can invoke the engine.</td></tr>
+ <tr><td>AC-12</td><td>Continuous learning</td><td>Test execution produces additional versioned relationship evidence.</td></tr>
+ <tr><td>AC-13</td><td>Reproducibility</td><td>Identical changes, snapshot, inventory, and policy produce identical plans.</td></tr>
+ <tr><td>AC-14</td><td>Cross-language impact</td><td>Contracts and other shared artifacts propagate impact across languages.</td></tr>
+ </tbody></table></div>
+ <h3>1.2 Nonfunctional targets</h3>
+ <div class="tablewrap"><table><thead><tr><th>Metric</th><th>Proposed MVP target</th></tr></thead><tbody>
+ <tr><td>Observed regression misses</td><td>Zero confirmed omitted failure-detecting tests during shadow-mode evaluation</td></tr>
+ <tr><td>CI wall-clock reduction</td><td>At least 50% median on representative reference repositories</td></tr>
+ <tr><td>Test-count reduction</td><td>At least 60% median on ordinary pull requests</td></tr>
+ <tr><td>Incremental index update</td><td>p95 below 30 seconds on a reference 100,000-node graph</td></tr>
+ <tr><td>Planning latency</td><td>p95 below 2 seconds after graph updates</td></tr>
+ <tr><td>Determinism</td><td>100% for identical inputs</td></tr>
+ <tr><td>Explanation coverage</td><td>100% of selections and fallback decisions</td></tr>
+ <tr><td>Plugin failure safety</td><td>No silent CI success if a required plugin fails</td></tr>
+ </tbody></table></div>
+ <div class="callout important"><strong>Qualification:</strong> A measured zero-miss result is not a proof that unknown dependencies do not exist. These are engineering validation targets, not guarantees of perfect test selection.</div>
+ <h3>1.3 Test-first conformance scenarios</h3>
+ <div class="tablewrap"><table><thead><tr><th>Scenario</th><th>Expected behavior</th></tr></thead><tbody>
+ <tr><td>Isolated method modified</td><td>Select relevant tests, not unrelated modules.</td></tr>
+ <tr><td>Shared utility modified</td><td>Select all applicable transitive consumers.</td></tr>
+ <tr><td>Interface changed</td><td>Consider implementations, callers, and contracts.</td></tr>
+ <tr><td>Comment-only edit</td><td>Skip behavioral tests only if proven nonbehavioral.</td></tr>
+ <tr><td>Symbol renamed</td><td>Preserve identity if reliably resolved; otherwise expand.</td></tr>
+ <tr><td>Function deleted</td><td>Use baseline relationships to find former consumers.</td></tr>
+ <tr><td>New test added</td><td>Include the test even without historical coverage.</td></tr>
+ <tr><td>Dependency version changed</td><td>Include dependent components and associated tests.</td></tr>
+ <tr><td>OpenAPI contract changed</td><td>Select affected consumers across languages.</td></tr>
+ <tr><td>Test config changed</td><td>Include tests dependent on that configuration.</td></tr>
+ <tr><td>Analyzer unavailable</td><td>Expand safely or fail; never silently report success.</td></tr>
+ <tr><td>Dynamic relationship unknown</td><td>Expand to a suitable project or test-suite boundary.</td></tr>
+ </tbody></table></div>
+ <div class="callout success"><strong>Property-based acceptance:</strong> Adding a possible dependency edge must never shrink the selected test set when all other inputs remain equal.</div>
+</section>
+<section class="section" id="architecture">
+ <div class="section-head"><span class="secno">02</span><h2>System architecture</h2></div>
+ <p>Implement the core as a <strong>modular monolith</strong> with <strong>out-of-process plugins</strong>. The executable works locally or in CI, while plugins can be written in any language that implements the protocol.</p>
+ <figure class="fig"><div class="fighead">Logical component architecture</div>
+ <svg viewBox="0 0 960 560" role="img" aria-label="Git and CI connect to change detection, then plugin analyzers feed a versioned dependency graph. The impact analyzer and safety policy generate an execution plan, which runner plugins execute, returning results and evidence to the graph.">
+ <defs><marker id="arr1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6881a7"/></marker></defs>
+ <rect x="350" y="15" width="260" height="50" rx="12" fill="#1b4db0"/><text x="480" y="35" fill="white" font-size="15" font-weight="700" text-anchor="middle">Git / CLI / CI Providers</text><text x="480" y="52" fill="#dceaff" font-size="11" text-anchor="middle">Repository events and revisions</text>
+ <path d="M480 65V95" stroke="#6881a7" stroke-width="2" marker-end="url(#arr1)"/><rect x="327" y="96" width="306" height="46" rx="10" fill="#e8f0fd" stroke="#bbd1f1"/><text x="480" y="123" fill="#184378" font-size="14" font-weight="700" text-anchor="middle">Change Detection &amp; Discovery</text>
+ <rect x="16" y="176" width="274" height="267" rx="15" fill="#f2f7fd" stroke="#bcd0ec" stroke-width="1.5"/><text x="153" y="199" fill="#52749e" font-size="12" font-weight="800" text-anchor="middle">PLUGIN LAYER</text>
+ <g font-size="12" font-weight="700" text-anchor="middle"><rect x="40" y="218" width="225" height="38" rx="9" fill="#fff" stroke="#d0dded"/><text x="152" y="242" fill="#25466e">Language Analyzers</text><rect x="40" y="266" width="225" height="38" rx="9" fill="#fff" stroke="#d0dded"/><text x="152" y="290" fill="#25466e">Build &amp; Contract Analyzers</text><rect x="40" y="314" width="225" height="38" rx="9" fill="#fff" stroke="#d0dded"/><text x="152" y="338" fill="#25466e">Test Discovery</text><rect x="40" y="362" width="225" height="38" rx="9" fill="#fff" stroke="#d0dded"/><text x="152" y="386" fill="#25466e">Coverage / Trace Collectors</text></g>
+ <rect x="324" y="176" width="311" height="267" rx="15" fill="#f0f5ff" stroke="#8fb4ef" stroke-width="1.5"/><text x="479" y="199" fill="#5179b8" font-size="12" font-weight="800" text-anchor="middle">LANGUAGE-INDEPENDENT CORE</text>
+ <rect x="351" y="218" width="256" height="43" rx="9" fill="#2455b4"/><text x="479" y="245" fill="white" font-size="13" font-weight="700" text-anchor="middle">Versioned Dependency Graph</text>
+ <rect x="351" y="279" width="256" height="43" rx="9" fill="white" stroke="#bad0ee"/><text x="479" y="306" fill="#284876" font-size="13" font-weight="700" text-anchor="middle">Impact Analysis</text>
+ <rect x="351" y="340" width="256" height="43" rx="9" fill="white" stroke="#bad0ee"/><text x="479" y="367" fill="#284876" font-size="13" font-weight="700" text-anchor="middle">Safety &amp; Selection Policy</text>
+ <rect x="351" y="400" width="256" height="29" rx="8" fill="#d8e7fb" stroke="#bad0ee"/><text x="479" y="419" fill="#184b8d" font-size="12" font-weight="800" text-anchor="middle">Execution Planner</text>
+ <path d="M479 261V278M479 322V339M479 383V399" stroke="#6983a8" stroke-width="1.8" marker-end="url(#arr1)"/>
+ <rect x="666" y="176" width="276" height="267" rx="15" fill="#f4f8fb" stroke="#c2d5e3"/><text x="804" y="199" fill="#607e92" font-size="12" font-weight="800" text-anchor="middle">EXECUTION &amp; FEEDBACK</text>
+ <rect x="690" y="224" width="228" height="45" rx="9" fill="white" stroke="#c7d9e5"/><text x="804" y="251" fill="#2a5267" font-size="13" font-weight="700" text-anchor="middle">Test Runner Adapters</text>
+ <rect x="690" y="293" width="228" height="45" rx="9" fill="#e3f5ef" stroke="#b4ddcf"/><text x="804" y="320" fill="#19684f" font-size="13" font-weight="700" text-anchor="middle">Test Execution</text>
+ <rect x="690" y="366" width="228" height="45" rx="9" fill="white" stroke="#c7d9e5"/><text x="804" y="393" fill="#2a5267" font-size="13" font-weight="700" text-anchor="middle">Results &amp; Evidence</text>
+ <path d="M480 142V162H153V217" fill="none" stroke="#6881a7" stroke-width="1.8" marker-end="url(#arr1)"/><path d="M266 240H334V239H351" fill="none" stroke="#6881a7" stroke-width="1.8" marker-end="url(#arr1)"/><path d="M266 288H320V250H351" fill="none" stroke="#6881a7" stroke-width="1.8" marker-end="url(#arr1)"/>
+ <path d="M608 414H643V246H689" fill="none" stroke="#6881a7" stroke-width="2" marker-end="url(#arr1)"/><path d="M804 269V291M804 339V365" stroke="#6881a7" stroke-width="2" marker-end="url(#arr1)"/>
+ <path d="M804 411V481H153V400" fill="none" stroke="#15916f" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arr1)"/><path d="M153 400V462H479V262" fill="none" stroke="#15916f" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arr1)"/>
+ <text x="480" y="516" fill="#16765a" font-size="12" text-anchor="middle" font-weight="700">Dashed arrows: runtime evidence enriches future graph snapshots</text>
+ </svg><figcaption class="figcaption">The core processes normalized relationships and evidence. Plugins own language or framework-specific semantics and execution.</figcaption></figure>
+ <div class="tablewrap"><table><thead><tr><th>Component</th><th>Responsibility</th><th>Language-specific?</th></tr></thead><tbody>
+ <tr><td>Change detector</td><td>Compare two repository revisions and identify changed artifacts</td><td>No</td></tr>
+ <tr><td>Analyzer plugins</td><td>Discover symbols, static dependencies, contracts, and observed relationships</td><td>Yes</td></tr>
+ <tr><td>Graph engine</td><td>Normalize, version, index, and traverse evidence-backed relationships</td><td>No</td></tr>
+ <tr><td>Selection engine</td><td>Compute affected tests, widen for uncertainty, produce explanations</td><td>No</td></tr>
+ <tr><td>Runner plugins</td><td>Discover tests and execute runnable subsets using native frameworks</td><td>Yes</td></tr>
+ </tbody></table></div>
+ <p>The core never needs to understand C# methods, Python decorators, JavaScript imports, or JUnit selectors. It understands artifact identities, changes, directed dependencies, test identities, and evidence validity.</p>
+</section>
+<section class="section" id="graph">
+ <div class="section-head"><span class="secno">03</span><h2>Graph model</h2></div>
+ <p>Use a <strong>typed property graph</strong> built from versioned evidence. A file-only dependency graph is too coarse for precise, high-confidence selection.</p>
+ <div class="cards"><div class="card"><strong>Source entities</strong><p>Repositories, projects, source files, functions, types, methods, modules.</p></div><div class="card"><strong>Verification entities</strong><p>Tests, parameterized test cases, fixtures, suites, evaluation scenarios.</p></div><div class="card"><strong>Contract entities</strong><p>APIs, schemas, database tables, events, messages, interfaces.</p></div><div class="card"><strong>Environment entities</strong><p>Build targets, package versions, configuration, feature flags, toolchains.</p></div></div>
+ <h3>3.1 Relationship types</h3><p>Use consistent direction for a dependency relationship: <code>Consumer → Dependency</code>. Thus <code>CheckoutService → PricingService</code> represents CheckoutService depending on PricingService. Additional typed relationships can describe verification and execution observations, with their semantics explicit.</p>
+ <div class="flowrow"><span class="pill">CALLS</span><span class="pill">REFERENCES</span><span class="pill">IMPLEMENTS</span><span class="pill">IMPORTS</span><span class="pill">READS</span><span class="pill">WRITES</span><span class="pill">DEPENDS_ON</span><span class="pill">CONSUMES_CONTRACT</span><span class="pill">EXECUTES</span><span class="pill">VALIDATES</span></div>
+ <div class="tablewrap"><table><thead><tr><th>Edge property</th><th>Reason</th></tr></thead><tbody>
+ <tr><td>Source/target IDs</td><td>Stable entity references</td></tr><tr><td>Relationship type</td><td>Defines impact and traversal semantics</td></tr><tr><td>Evidence source</td><td>Static, runtime, build metadata, contract, etc.</td></tr><tr><td>Analyzer ID/version</td><td>Provenance and repeatability</td></tr><tr><td>Revision</td><td>Source state to which evidence applies</td></tr><tr><td>Confidence/completeness</td><td>Distinguishes possible, definite, and incompletely observed relationships</td></tr><tr><td>Validity scope</td><td>Build target, platform, runtime, configuration, environment</td></tr>
+ </tbody></table></div>
+ <h3>3.2 Cross-language propagation</h3>
+ <figure class="fig"><div class="fighead">Illustrative C# → OpenAPI → TypeScript → Python dependency surface</div>
+ <svg viewBox="0 0 960 336" role="img" aria-label="C# Pricing API publishes a changed OpenAPI contract, consumed by a TypeScript client and storefront checkout. C# contract, TypeScript client and Python end-to-end tests are potentially affected.">
+ <defs><marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7890ae"/></marker></defs>
+ <rect x="18" y="117" width="182" height="58" rx="10" fill="#e9f1fb" stroke="#b0c9e9"/><text x="109" y="139" font-size="14" text-anchor="middle" font-weight="700" fill="#234a78">C# Pricing API</text><text x="109" y="157" font-size="11" text-anchor="middle" fill="#5b779a">Producer</text>
+ <rect x="262" y="117" width="198" height="58" rx="10" fill="#fff0dd" stroke="#dfac65" stroke-width="2"/><text x="361" y="139" font-size="14" text-anchor="middle" font-weight="700" fill="#85531d">OpenAPI Contract</text><text x="361" y="157" font-size="11" text-anchor="middle" fill="#a46621">Changed artifact</text>
+ <rect x="530" y="117" width="184" height="58" rx="10" fill="#e9f1fb" stroke="#b0c9e9"/><text x="622" y="139" font-size="14" text-anchor="middle" font-weight="700" fill="#234a78">TypeScript Client</text><text x="622" y="157" font-size="11" text-anchor="middle" fill="#5b779a">Contract consumer</text>
+ <rect x="769" y="117" width="173" height="58" rx="10" fill="#e9f1fb" stroke="#b0c9e9"/><text x="855" y="139" font-size="14" text-anchor="middle" font-weight="700" fill="#234a78">Storefront Checkout</text><text x="855" y="157" font-size="11" text-anchor="middle" fill="#5b779a">Application consumer</text>
+ <path d="M200 146H260M460 146H528M714 146H767" stroke="#7890ae" stroke-width="2" marker-end="url(#arr2)"/><g fill="#7890ae" font-size="11" text-anchor="middle"><text x="231" y="130">publishes</text><text x="495" y="130">consumes</text><text x="742" y="130">calls</text></g>
+ <rect x="260" y="20" width="200" height="54" rx="10" fill="#e1f5ed" stroke="#86c5aa"/><text x="360" y="43" fill="#17674f" font-size="13" font-weight="700" text-anchor="middle">C# Contract Tests</text><text x="360" y="60" fill="#35826b" font-size="11" text-anchor="middle">Selected</text><path d="M361 74V115" stroke="#238569" stroke-width="2" stroke-dasharray="5 4"/>
+ <rect x="522" y="232" width="200" height="54" rx="10" fill="#e1f5ed" stroke="#86c5aa"/><text x="622" y="255" fill="#17674f" font-size="13" font-weight="700" text-anchor="middle">TypeScript Client Tests</text><text x="622" y="272" fill="#35826b" font-size="11" text-anchor="middle">Selected</text><path d="M622 175V230" stroke="#238569" stroke-width="2" stroke-dasharray="5 4"/>
+ <rect x="755" y="232" width="188" height="54" rx="10" fill="#e1f5ed" stroke="#86c5aa"/><text x="849" y="255" fill="#17674f" font-size="13" font-weight="700" text-anchor="middle">Python E2E Tests</text><text x="849" y="272" fill="#35826b" font-size="11" text-anchor="middle">Selected</text><path d="M855 175V230" stroke="#238569" stroke-width="2" stroke-dasharray="5 4"/>
+ <text x="480" y="321" text-anchor="middle" font-size="11" fill="#7c8ca3">Green = selected verification relationships · Orange = changed contract</text>
+ </svg><figcaption class="figcaption">A cross-language contract is a first-class graph node. Internal implementation changes should not automatically be classified as public contract changes.</figcaption></figure>
+ <p>A versioned baseline graph is essential. When an entity is removed, its former consumers may only appear in the parent revision; analyzing the new tree alone would miss them.</p>
+</section>
+<section class="section" id="plugins">
+ <div class="section-head"><span class="secno">04</span><h2>Plugin architecture</h2></div>
+ <p>Define a versioned contract that allows plugins written in any language to communicate with the core. Begin with <strong>JSON-RPC over stdio</strong> for simple out-of-process execution; add a gRPC transport only when performance or remote execution demands it.</p>
+ <div class="tablewrap"><table><thead><tr><th>Plugin capability</th><th>Input</th><th>Output</th></tr></thead><tbody>
+ <tr><td>Language analyzer</td><td>Source tree / changed files</td><td>Symbols, definitions, references, possible call edges</td></tr>
+ <tr><td>Build analyzer</td><td>Build manifests and dependency metadata</td><td>Project graph, build targets, package dependencies</td></tr>
+ <tr><td>Contract analyzer</td><td>OpenAPI, JSON Schema, migrations, event schemas</td><td>Cross-module relationships</td></tr>
+ <tr><td>Test discoverer</td><td>Test workspace</td><td>Stable test IDs, metadata, runner capabilities</td></tr>
+ <tr><td>Evidence collector</td><td>Instrumented test execution</td><td>Per-test code observations and runtime edges</td></tr>
+ <tr><td>Test runner</td><td>Execution plan</td><td>Test outcomes, timing, artifacts, execution identifiers</td></tr>
+ </tbody></table></div>
+ <h3>4.1 Illustrative plugin manifest</h3>
+<pre><code>{
+  "apiVersion": "gbit.plugin/v1",
+  "id": "gbit.analyzer.dotnet",
+  "version": "0.1.0",
+  "capabilities": [
+    "symbols",
+    "references",
+    "incremental-analysis"
+  ],
+  "languages": ["csharp"],
+  "methods": [
+    "initialize",
+    "analyze",
+    "getCapabilities"
+  ]
+}</code></pre>
+ <p>Plugin processes report capabilities, receive repository revision and workspace context, and return normalized graph entities and evidence. Plugins that support several capabilities can implement them together.</p>
+ <h3>4.2 Existing infrastructure to reuse</h3>
+ <ul><li><strong>SCIP</strong>: a language-independent Protobuf code-intelligence format that already represents definitions and references, reducing bespoke symbol indexing.</li><li><strong>Tree-sitter</strong>: practical cross-language incremental parsing fallback when precise semantic indexers are not available.</li><li><strong>Native compiler/build APIs</strong>: richer source and project relationships for languages that expose them.</li><li><strong>Native runner adapters</strong>: test discovery/filter syntax remains owned by pytest, xUnit, JUnit, Jest, and similar systems.</li></ul>
+ <div class="callout important"><strong>Boundary:</strong> SCIP and Tree-sitter do not, by themselves, provide a complete behavioral dependency graph. Missing runtime, configuration, and dynamic relationships must remain visible as uncertainty.</div>
+ <h3>4.3 Plugin isolation and security</h3>
+ <p>Plugins should run with pinned versions, restricted filesystem and network access, bounded CPU/memory, explicit timeouts, and no CI secrets unless strictly required. Treat repository-defined plugin executables on untrusted pull requests as untrusted code. A required plugin failure must fail or safely widen verification, never silently return an empty dependency set.</p>
+</section>
+<section class="section" id="selection">
+ <div class="section-head"><span class="secno">05</span><h2>Test selection engine</h2></div>
+ <p>The planner consumes a change set, base/head graph snapshots, discovered test inventory, and a safety policy. Its output is a deterministic, explainable <strong>execution plan</strong>.</p>
+ <figure class="fig"><div class="fighead">Impact planning pipeline</div>
+ <svg viewBox="0 0 960 186" role="img" aria-label="Changed artifacts are mapped to graph entities, base and head relationships are merged, reverse dependencies traversed, tests matched, safety boundaries expanded, and an execution plan emitted.">
+ <defs><marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7390b0"/></marker></defs>
+ <g text-anchor="middle" font-size="12" font-weight="700" fill="#254973"><rect x="10" y="43" width="133" height="76" rx="9" fill="#e9f2ff" stroke="#b8d0ee"/><text x="76" y="74">Changed</text><text x="76" y="91">artifacts</text>
+ <rect x="167" y="43" width="133" height="76" rx="9" fill="#e9f2ff" stroke="#b8d0ee"/><text x="233" y="67">Resolve graph</text><text x="233" y="84">entity IDs</text><text x="233" y="101" font-size="10" font-weight="500">base + head</text>
+ <rect x="324" y="43" width="133" height="76" rx="9" fill="#e9f2ff" stroke="#b8d0ee"/><text x="390" y="67">Reverse</text><text x="390" y="84">dependency</text><text x="390" y="101">traversal</text>
+ <rect x="481" y="43" width="133" height="76" rx="9" fill="#e9f2ff" stroke="#b8d0ee"/><text x="547" y="74">Match</text><text x="547" y="91">test entities</text>
+ <rect x="638" y="43" width="133" height="76" rx="9" fill="#fff2de" stroke="#e4c28f"/><text x="704" y="67">Apply safety</text><text x="704" y="84">fallbacks &amp;</text><text x="704" y="101">policy</text>
+ <rect x="795" y="43" width="153" height="76" rx="9" fill="#e3f5ed" stroke="#91d0b9"/><text x="871" y="74" fill="#12614d">Execution</text><text x="871" y="91" fill="#12614d">plan</text></g>
+ <path d="M143 81H165M300 81H322M457 81H479M614 81H636M771 81H793" stroke="#7390b0" stroke-width="2" marker-end="url(#arr3)"/><text x="480" y="155" text-anchor="middle" fill="#7c8ca3" font-size="11">Results include impacted tests, fallback additions, runnable units, omitted tests, and explanation paths.</text>
+ </svg></figure>
+ <h3>5.1 Formal selection model</h3>
+ <p>Let <strong>C</strong> be changed entities; <strong>G<sub>b</sub></strong> and <strong>G<sub>h</sub></strong> be baseline and proposed-revision graphs; <strong>R(C)</strong> be reverse-reachable entities using relevant edges from both snapshots; and <strong>T</strong> be all discovered tests.</p>
+ <div class="callout"><strong>Selection:</strong> T<sub>run</sub> = T<sub>changed</sub> ∪ T<sub>related</sub> ∪ T<sub>fallback</sub>.</div>
+ <p><strong>T<sub>related</sub></strong> comprises tests associated with the affected surface through dependency or verification evidence. <strong>T<sub>fallback</sub></strong> contains tests required because analysis cannot confidently bound impact. Edge traversal rules must be type-aware: consumer dependencies and verification observations are not automatically interchangeable.</p>
+ <h3>5.2 Selection versus execution granularity</h3>
+ <p>A graph may identify one affected parameterized test, but the native runner may only offer a stable selector for its class or file. GBIT must distinguish <strong>requested test cases</strong> from <strong>actual runnable units</strong> and record both in the plan.</p>
+ <h3>5.3 Minimum execution-plan schema</h3>
+ <ul><li>Input base/head revisions and graph snapshot IDs.</li><li>Policy, analyzer versions, and completeness status.</li><li>Selected test identities and translated runner selectors.</li><li>Coverage gaps, fallback boundaries, and excluded tests.</li><li>Per-test causal paths and provenance references.</li><li>Predicted versus actual execution counts and durations.</li></ul>
+</section>
+<section class="section" id="correctness">
+ <div class="section-head"><span class="secno">06</span><h2>Correctness, evidence and safety</h2></div>
+ <p>Code change impact is not fully captured by static references. The engine should combine several evidence classes while retaining their separate limitations.</p>
+ <div class="tablewrap"><table><thead><tr><th>Evidence</th><th>Useful for</th><th>Limitation</th></tr></thead><tbody><tr><td>Semantic/static analysis</td><td>Potential dependencies before code executes</td><td>Reflection, dynamic dispatch, runtime configuration</td></tr><tr><td>Per-test runtime coverage</td><td>Observed test-to-code execution links</td><td>Historical observations cannot prove new paths are impossible</td></tr><tr><td>Contract/build relationships</td><td>Cross-module and cross-language impact</td><td>Often coarse and can miss behavioral coupling</td></tr></tbody></table></div>
+ <div class="callout important"><strong>Per-test coverage requirement:</strong> Aggregate coverage is insufficient for exact <code>Test → Code</code> mapping. GBIT requires per-test execution contexts, trace correlation, or equivalent instrumentation; otherwise it must plan at a coarser granularity.</div>
+ <h3>6.1 Operating policies</h3>
+ <div class="tablewrap"><table><thead><tr><th>Mode</th><th>Behavior</th><th>Best use</th></tr></thead><tbody><tr><td>Shadow</td><td>Compute selected tests; execute all tests; compare results</td><td>Initial rollout and validation</td></tr><tr><td>Conservative</td><td>Execute impacted tests plus widened uncertain scopes</td><td>Protected branches and mainline</td></tr><tr><td>Optimized</td><td>Use precise, validated relationships under explicit policy</td><td>Established codebases with sound evidence</td></tr></tbody></table></div>
+ <h3>6.2 Self-validation</h3>
+ <p>Continuously compare selection predictions with full-suite executions on designated builds. Measure:</p>
+ <ul><li><strong>Regression miss rate:</strong> fraction of failure-detecting tests that GBIT omitted, evaluated against known faulty changes.</li><li><strong>Selection efficiency:</strong> wall-clock time saved after indexing, planning and CI orchestration overhead.</li><li><strong>Fallback rate:</strong> proportion of changes requiring conservative widening.</li><li><strong>Explanation completeness:</strong> proportion of decisions with reproducible causal paths and evidence metadata.</li></ul>
+ <p>Replay historical regressions and use controlled mutation testing to enrich the dataset. Include interface changes, configuration shifts, schema changes, reflection, generated code and package upgrades. A test that has never observed a new branch cannot establish that the branch is safe to skip.</p>
+ <div class="callout success"><strong>Core safety invariant:</strong> When dependency analysis is incomplete, GBIT must widen the selected test boundary or refuse optimized execution. An empty test selection is not automatically a valid passing result.</div>
+</section>
+<section class="section" id="persistence">
+ <div class="section-head"><span class="secno">07</span><h2>Persistence and scalability</h2></div>
+ <p>Use <strong>SQLite with adjacency indexes</strong> for an initial embedded engine. A specialized graph database is not necessary until workloads demonstrate that graph traversal or multi-user concurrency requires one.</p>
+ <div class="tablewrap"><table><thead><tr><th>Logical table/store</th><th>Contents</th></tr></thead><tbody><tr><td>Entities</td><td>Canonical IDs, entity types, locations, versions</td></tr><tr><td>Relationships</td><td>Directed edges with types, validity, provenance</td></tr><tr><td>GraphSnapshots</td><td>Commit/revision mapping, indexing metadata</td></tr><tr><td>TestInventory</td><td>Discovered tests and executable identities</td></tr><tr><td>CoverageEvidence</td><td>Per-test observations by revision and environment</td></tr><tr><td>ExecutionHistory</td><td>Outcomes, durations, flakiness, regression signals</td></tr><tr><td>SelectionPlans</td><td>Selected and deferred tests, explanation paths and policies</td></tr></tbody></table></div>
+ <p>Incremental indexing should use content hashes and invalidate affected relationships based on compiler settings, plugin versions, repository revisions, and configuration. Runtime evidence must be scoped to the build and instrumentation environment that produced it.</p>
+ <p>For an optional centralized deployment, PostgreSQL is a reasonable scaling step before introducing another storage engine.</p>
+</section>
+<section class="section" id="experience">
+ <div class="section-head"><span class="secno">08</span><h2>Developer experience</h2></div>
+ <p>GBIT should require minimal configuration for a conventional repository. The CLI discovers installed capabilities, creates an index, plans a test run, executes through native adapters, and explains decisions.</p>
+ <pre><code># Discover projects, analyzers and available test runners
+gbit init
+
+# Build the initial graph and collect baseline evidence
+gbit index --full
+
+# Show impacted tests for the current branch
+gbit plan --base origin/main --head HEAD
+
+# Execute the selected tests
+gbit test --base origin/main --head HEAD
+
+# Explain why a test was selected
+gbit explain test:checkout-discount
+
+# Visualize the affected graph
+gbit graph --affected
+
+# Verify the planner against the full test suite
+gbit verify --full</code></pre>
+ <h3>Illustrative plan output</h3><pre><code>GBIT Impact Analysis
+─────────────────────────────────────
+Changed artifacts:          6
+Affected symbols:          24
+Discovered tests:       8,412
+
+Directly impacted:         143
+Transitively impacted:     291
+Safety fallback:           120
+Total selected:            554
+
+Tests deferred:          7,858
+Selection reduction:      93.4%
+
+Graph completeness:       Partial
+Fallback:                 Python E2E suite
+Policy:                   Conservative</code></pre>
+ <p class="ref">Numbers are illustrative, not measured results.</p>
+ <p>The <code>explain</code> command should support both “Why was this test included?” and “Why was this test excluded?” The latter must state the bounds of analysis rather than presenting absence of a discovered edge as absolute proof of independence.</p>
+</section>
+<section class="section" id="roadmap">
+ <div class="section-head"><span class="secno">09</span><h2>Test-first implementation roadmap</h2></div>
+ <div class="phase"><div class="phase-num">01</div><div><h4>Graph kernel and conformance suite</h4><p>Implement change modeling, typed graph, snapshots, dependency traversal, safety policies and explanation paths. Write synthetic graph acceptance tests first.</p><div class="exit"><strong>Exit:</strong> All language-neutral selection, versioning, deletion, uncertainty and determinism scenarios pass.</div></div></div>
+ <div class="phase"><div class="phase-num">02</div><div><h4>Two independent language ecosystems</h4><p>Implement C#/.NET and Python/pytest analyzers and runner plugins. Integrate SCIP where supported. Enforce protocol conformance and independent plugin deployment.</p><div class="exit"><strong>Exit:</strong> Both ecosystems use the exact same core planning engine on real repositories, with reproducible selected test execution.</div></div></div>
+ <div class="phase"><div class="phase-num">03</div><div><h4>CI shadow-mode validation</h4><p>Integrate GitHub Actions and Azure DevOps. Record full-suite execution, compare planned subsets, replay historical changes and inject mutations.</p><div class="exit"><strong>Exit:</strong> Empirical missed-regression and wall-clock metrics meet an explicit rollout threshold across representative projects.</div></div></div>
+ <div class="phase"><div class="phase-num">04</div><div><h4>Cross-language impact and optimized CI</h4><p>Add TypeScript analysis, OpenAPI/JSON Schema propagation, per-test runtime instrumentation and conservative selective execution.</p><div class="exit"><strong>Exit:</strong> Contract changes select appropriate tests in other languages and CI safely enforces the computed plan.</div></div></div>
+</section>
+<section class="section" id="technology">
+ <div class="section-head"><span class="secno">10</span><h2>Technology decisions</h2></div>
+ <div class="tablewrap"><table><thead><tr><th>Concern</th><th>Proposed technology</th><th>Why</th></tr></thead><tbody><tr><td>Core engine</td><td>C# / .NET 10</td><td>Cross-platform runtime, strong testing and CLI ecosystem</td></tr><tr><td>Plugin protocol</td><td>JSON-RPC over stdio</td><td>Language independent and easy to isolate</td></tr><tr><td>Code index interchange</td><td>SCIP + native analyzers</td><td>Reuse symbol-definition and reference infrastructure</td></tr><tr><td>Generic parsing</td><td>Tree-sitter</td><td>Broad language support and incremental parsing</td></tr><tr><td>Graph storage</td><td>SQLite initially</td><td>Transactional, embedded and easy to deploy</td></tr><tr><td>CI integration</td><td>CLI + thin provider wrappers</td><td>Fits existing workflows with no hosted requirement</td></tr><tr><td>Diagnostics</td><td>OpenTelemetry</td><td>Interoperable diagnostics and performance measurement</td></tr><tr><td>Results interchange</td><td>Normalized internal model; JUnit XML in/out</td><td>Supports common CI reporting</td></tr><tr><td>Configuration</td><td>YAML</td><td>Readable and suitable for repositories</td></tr><tr><td>Visualization</td><td>Local web interface</td><td>Explain impact subgraphs and decisions</td></tr></tbody></table></div>
+ <p>The first implementation should avoid premature services or hosted infrastructure. Multi-tenant graph hosting and distributed execution are potential subsequent capabilities, not MVP prerequisites.</p>
+</section>
+<section class="section" id="positioning">
+ <div class="section-head"><span class="secno">11</span><h2>Differentiation and positioning</h2></div>
+ <p>Regression test selection is an established field. Existing tools such as Nx and pytest-testmon already provide forms of change-aware execution. A generic “run fewer tests” claim would not be defensible differentiation.</p>
+ <p><strong>GBIT's stronger proposition</strong> is combining fine-grained cross-language dependencies, externally pluggable analyzers and runners, first-class contracts, explicit evidence provenance, conservative uncertainty handling, and ongoing verification of its own selection decisions.</p>
+ <div class="callout">Product direction: evolve GBIT into a <strong>change-impact verification platform</strong> capable of selecting conventional tests, integration validations and eventually agent evaluations affected by code, tools, prompts, schemas and workflow changes.</div>
+ <p>For agent-native systems, extending the graph with prompts, model configurations, MCP tools, workflow transitions and evaluation datasets provides a direct path beyond source-code-only test selection. That extension should follow—not precede—validation of the core graph kernel.</p>
+</section>
+<section class="section" id="decisions">
+ <div class="section-head"><span class="secno">12</span><h2>Architectural decisions to lock in</h2></div>
+ <ol><li><strong>Language-neutral kernel:</strong> the planner has no language or test-framework specific implementation logic.</li><li><strong>Versioned graph and provenance:</strong> evidence belongs to explicit revisions and analyzer versions.</li><li><strong>Independent plugins:</strong> analyzers and runners can be installed and upgraded separately from the core.</li><li><strong>Correctness before optimization:</strong> uncertain relationships expand execution, never silently justify exclusions.</li><li><strong>No mandatory cloud dependency:</strong> indexing, planning and execution work offline or inside existing CI.</li><li><strong>Baseline/head-aware impact:</strong> deleted and changed relationships are traversed using both revisions.</li><li><strong>Selection separated from execution:</strong> native runner capability determines the final runnable granularity.</li></ol>
+ <h3>Immediate next deliverable</h3>
+ <p>Build the <strong>GBIT conformance repository</strong>: language-neutral graph fixtures, expected impact sets, safety and deletion scenarios, plugin protocol tests, and a deterministic planner baseline. Treat these acceptance tests as the executable architecture specification, then implement the kernel and plugins until all tests pass.</p>
+</section>
+<section class="section" id="sources">
+ <h2>Reference technologies and related work</h2>
+ <p class="ref">Reference links for evaluation and implementation. They are not evidence of GBIT's performance targets.</p>
+ <ul class="ref">
+ <li><a href="https://github.com/sourcegraph/scip">SCIP — Code Intelligence Protocol</a></li>
+ <li><a href="https://tree-sitter.github.io/tree-sitter/">Tree-sitter parsing framework</a></li>
+ <li><a href="https://nx.dev/ci/features/affected">Nx affected tasks</a></li>
+ <li><a href="https://testmon.org/">pytest-testmon</a></li>
+ <li><a href="https://docs.pytest.org/en/stable/how-to/usage.html">pytest test selection</a></li>
+ <li><a href="https://learn.microsoft.com/en-us/dotnet/core/testing/selective-unit-tests">.NET selective unit testing</a></li>
+ <li><a href="https://opentelemetry.io/docs/specs/semconv/cicd/">OpenTelemetry CI/CD semantic conventions</a></li>
+ </ul>
+ <div class="footnote">GBIT Architecture Proposal v0.1 · 7 November 2026 · Conceptual technical design. This proposal defines engineering targets and planned behavior; it is not a claim that GBIT has already been implemented or benchmarked.</div>
+</section>
+</main>
+</div>
+<script>
+(() => {
+  const links = [...document.querySelectorAll('.toc a')];
+  const sectionIds = links.map(a=>a.getAttribute('href').slice(1));
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(entries => {
+    const candidates = entries.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);
+    if (!candidates.length) return;
+    const activeId = candidates[0].target.id;
+    links.forEach(a=>{
+      const active = a.getAttribute('href') === '#'+activeId;
+      a.classList.toggle('active',active);
+      if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');
+    });
+  }, {rootMargin:'-5% 0px -72% 0px'});
+  sectionIds.forEach(id=>{const s=document.getElementById(id);if(s)io.observe(s)});
+})();
+</script>
+</body>
+</html>

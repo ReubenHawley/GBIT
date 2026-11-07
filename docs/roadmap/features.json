@@ -1,0 +1,500 @@
+[
+  {
+    "id": "F01",
+    "type": "feature",
+    "title": "Repository scaffold",
+    "epic": "E0",
+    "acceptanceCriteria": [
+      "AC-01"
+    ],
+    "tasks": [
+      "T001",
+      "T002",
+      "T003"
+    ],
+    "labels": [
+      "feature",
+      "e0"
+    ]
+  },
+  {
+    "id": "F02",
+    "type": "feature",
+    "title": "Build and CI skeleton",
+    "epic": "E0",
+    "acceptanceCriteria": [
+      "AC-11"
+    ],
+    "tasks": [
+      "T004",
+      "T005",
+      "T006"
+    ],
+    "labels": [
+      "feature",
+      "e0"
+    ]
+  },
+  {
+    "id": "F03",
+    "type": "feature",
+    "title": "Contribution conventions",
+    "epic": "E0",
+    "acceptanceCriteria": [
+      "AC-13"
+    ],
+    "tasks": [
+      "T007",
+      "T008",
+      "T009"
+    ],
+    "labels": [
+      "feature",
+      "e0"
+    ]
+  },
+  {
+    "id": "F04",
+    "type": "feature",
+    "title": "Conformance fixtures and scenarios",
+    "epic": "E1",
+    "acceptanceCriteria": [
+      "AC-05",
+      "AC-06",
+      "AC-10",
+      "AC-13"
+    ],
+    "tasks": [
+      "T010",
+      "T011",
+      "T012",
+      "T013"
+    ],
+    "labels": [
+      "feature",
+      "e1"
+    ]
+  },
+  {
+    "id": "F05",
+    "type": "feature",
+    "title": "Entity and relationship model",
+    "epic": "E1",
+    "acceptanceCriteria": [
+      "AC-03"
+    ],
+    "tasks": [
+      "T014",
+      "T015",
+      "T016"
+    ],
+    "labels": [
+      "feature",
+      "e1"
+    ]
+  },
+  {
+    "id": "F06",
+    "type": "feature",
+    "title": "Versioned graph snapshots",
+    "epic": "E1",
+    "acceptanceCriteria": [
+      "AC-04",
+      "AC-08"
+    ],
+    "tasks": [
+      "T017",
+      "T018",
+      "T019"
+    ],
+    "labels": [
+      "feature",
+      "e1"
+    ]
+  },
+  {
+    "id": "F07",
+    "type": "feature",
+    "title": "Impact traversal",
+    "epic": "E1",
+    "acceptanceCriteria": [
+      "AC-05",
+      "AC-14"
+    ],
+    "tasks": [
+      "T020",
+      "T021",
+      "T022",
+      "T023"
+    ],
+    "labels": [
+      "feature",
+      "e1"
+    ]
+  },
+  {
+    "id": "F08",
+    "type": "feature",
+    "title": "Safety policy and fallback",
+    "epic": "E1",
+    "acceptanceCriteria": [
+      "AC-10"
+    ],
+    "tasks": [
+      "T024",
+      "T025",
+      "T026",
+      "T027"
+    ],
+    "labels": [
+      "feature",
+      "e1"
+    ]
+  },
+  {
+    "id": "F09",
+    "type": "feature",
+    "title": "Explainability and execution plan",
+    "epic": "E1",
+    "acceptanceCriteria": [
+      "AC-09"
+    ],
+    "tasks": [
+      "T028",
+      "T029",
+      "T030",
+      "T031"
+    ],
+    "labels": [
+      "feature",
+      "e1"
+    ]
+  },
+  {
+    "id": "F10",
+    "type": "feature",
+    "title": "Configuration",
+    "epic": "E1",
+    "acceptanceCriteria": [
+      "AC-02"
+    ],
+    "tasks": [
+      "T032",
+      "T033"
+    ],
+    "labels": [
+      "feature",
+      "e1"
+    ]
+  },
+  {
+    "id": "F11",
+    "type": "feature",
+    "title": "Plugin protocol",
+    "epic": "E2",
+    "acceptanceCriteria": [
+      "AC-07"
+    ],
+    "tasks": [
+      "T034",
+      "T035",
+      "T036",
+      "T037"
+    ],
+    "labels": [
+      "feature",
+      "e2"
+    ]
+  },
+  {
+    "id": "F12",
+    "type": "feature",
+    "title": "Plugin isolation and security",
+    "epic": "E2",
+    "acceptanceCriteria": [
+      "AC-10"
+    ],
+    "tasks": [
+      "T038",
+      "T039",
+      "T040"
+    ],
+    "labels": [
+      "feature",
+      "e2"
+    ]
+  },
+  {
+    "id": "F13",
+    "type": "feature",
+    "title": "SQLite graph store",
+    "epic": "E2",
+    "acceptanceCriteria": [
+      "AC-08"
+    ],
+    "tasks": [
+      "T041",
+      "T042",
+      "T043"
+    ],
+    "labels": [
+      "feature",
+      "e2"
+    ]
+  },
+  {
+    "id": "F14",
+    "type": "feature",
+    "title": "Change detection and discovery",
+    "epic": "E2",
+    "acceptanceCriteria": [
+      "AC-02",
+      "AC-04"
+    ],
+    "tasks": [
+      "T044",
+      "T045"
+    ],
+    "labels": [
+      "feature",
+      "e2"
+    ]
+  },
+  {
+    "id": "F15",
+    "type": "feature",
+    "title": "C#/.NET analyzer and xUnit runner",
+    "epic": "E2",
+    "acceptanceCriteria": [
+      "AC-02",
+      "AC-03"
+    ],
+    "tasks": [
+      "T046",
+      "T047",
+      "T048"
+    ],
+    "labels": [
+      "feature",
+      "e2"
+    ]
+  },
+  {
+    "id": "F16",
+    "type": "feature",
+    "title": "Python analyzer and pytest runner",
+    "epic": "E2",
+    "acceptanceCriteria": [
+      "AC-02",
+      "AC-03"
+    ],
+    "tasks": [
+      "T049",
+      "T050",
+      "T051"
+    ],
+    "labels": [
+      "feature",
+      "e2"
+    ]
+  },
+  {
+    "id": "F17",
+    "type": "feature",
+    "title": "CLI commands",
+    "epic": "E2",
+    "acceptanceCriteria": [
+      "AC-11"
+    ],
+    "tasks": [
+      "T052",
+      "T053",
+      "T054"
+    ],
+    "labels": [
+      "feature",
+      "e2"
+    ]
+  },
+  {
+    "id": "F18",
+    "type": "feature",
+    "title": "CI provider integrations",
+    "epic": "E3",
+    "acceptanceCriteria": [
+      "AC-11"
+    ],
+    "tasks": [
+      "T055",
+      "T056",
+      "T057"
+    ],
+    "labels": [
+      "feature",
+      "e3"
+    ]
+  },
+  {
+    "id": "F19",
+    "type": "feature",
+    "title": "Shadow-mode comparison",
+    "epic": "E3",
+    "acceptanceCriteria": [
+      "AC-12"
+    ],
+    "tasks": [
+      "T058",
+      "T059",
+      "T060"
+    ],
+    "labels": [
+      "feature",
+      "e3"
+    ]
+  },
+  {
+    "id": "F20",
+    "type": "feature",
+    "title": "Validation datasets",
+    "epic": "E3",
+    "acceptanceCriteria": [
+      "AC-12"
+    ],
+    "tasks": [
+      "T061",
+      "T062",
+      "T063"
+    ],
+    "labels": [
+      "feature",
+      "e3"
+    ]
+  },
+  {
+    "id": "F21",
+    "type": "feature",
+    "title": "Metrics and diagnostics",
+    "epic": "E3",
+    "acceptanceCriteria": [
+      "AC-09"
+    ],
+    "tasks": [
+      "T064",
+      "T065",
+      "T066"
+    ],
+    "labels": [
+      "feature",
+      "e3"
+    ]
+  },
+  {
+    "id": "F22",
+    "type": "feature",
+    "title": "Contract analyzers",
+    "epic": "E4",
+    "acceptanceCriteria": [
+      "AC-14"
+    ],
+    "tasks": [
+      "T067",
+      "T068",
+      "T069"
+    ],
+    "labels": [
+      "feature",
+      "e4"
+    ]
+  },
+  {
+    "id": "F23",
+    "type": "feature",
+    "title": "TypeScript ecosystem",
+    "epic": "E4",
+    "acceptanceCriteria": [
+      "AC-02",
+      "AC-14"
+    ],
+    "tasks": [
+      "T070",
+      "T071",
+      "T072"
+    ],
+    "labels": [
+      "feature",
+      "e4"
+    ]
+  },
+  {
+    "id": "F24",
+    "type": "feature",
+    "title": "Per-test runtime evidence",
+    "epic": "E4",
+    "acceptanceCriteria": [
+      "AC-12"
+    ],
+    "tasks": [
+      "T073",
+      "T074",
+      "T075",
+      "T076"
+    ],
+    "labels": [
+      "feature",
+      "e4"
+    ]
+  },
+  {
+    "id": "F25",
+    "type": "feature",
+    "title": "Optimized selective execution",
+    "epic": "E4",
+    "acceptanceCriteria": [
+      "AC-06"
+    ],
+    "tasks": [
+      "T077",
+      "T078",
+      "T079"
+    ],
+    "labels": [
+      "feature",
+      "e4"
+    ]
+  },
+  {
+    "id": "F26",
+    "type": "feature",
+    "title": "Agent-native entities",
+    "epic": "E5",
+    "acceptanceCriteria": [
+      "AC-03"
+    ],
+    "tasks": [
+      "T080",
+      "T081",
+      "T082"
+    ],
+    "labels": [
+      "feature",
+      "e5"
+    ]
+  },
+  {
+    "id": "F27",
+    "type": "feature",
+    "title": "Hosted and distributed options",
+    "epic": "E5",
+    "acceptanceCriteria": [
+      "AC-07"
+    ],
+    "tasks": [
+      "T083",
+      "T084"
+    ],
+    "labels": [
+      "feature",
+      "e5"
+    ]
+  }
+]

@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "T001",
+    "type": "task",
+    "title": "Create .NET 10 solution and project layout",
+    "feature": "F01",
+    "epic": "E0",
+    "status": "Done",
+    "labels": [
+      "task",
+      "e0"
+    ]
+  },
+  {
+    "id": "T002",
+    "type": "task",
+    "title": "Add Directory.Build.props, global.json, editorconfig, gitignore",
+    "feature": "F01",
+    "epic": "E0",
+    "status": "Done",
+    "labels": [
+      "task",
+      "e0"
+    ]
+  },
+  {
+    "id": "T003",
+    "type": "task",
+    "title": "Add sample gbit.yml and plugin/ci placeholder folders",
+    "feature": "F01",
+    "epic": "E0",
+    "status": "Done",
+    "labels": [
+      "task",
+      "e0"
+    ]
+  },
+  {
+    "id": "T004",
+    "type": "task",
+    "title": "Add GitHub Actions workflow: build, test, format check",
+    "feature": "F02",
+    "epic": "E0",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e0"
+    ]
+  },
+  {
+    "id": "T005",
+    "type": "task",
+    "title": "Add code coverage reporting and threshold",
+    "feature": "F02",
+    "epic": "E0",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e0"
+    ]
+  },
+  {
+    "id": "T006",
+    "type": "task",
+    "title": "Add dependabot/renovate configuration",
+    "feature": "F02",
+    "epic": "E0",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e0"
+    ]
+  },
+  {
+    "id": "T007",
+    "type": "task",
+    "title": "Write CONTRIBUTING.md with test-first workflow",
+    "feature": "F03",
+    "epic": "E0",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e0"
+    ]
+  },
+  {
+    "id": "T008",
+    "type": "task",
+    "title": "Add ADR template and record the 7 locked architectural decisions",
+    "feature": "F03",
+    "epic": "E0",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e0"
+    ]
+  },
+  {
+    "id": "T009",
+    "type": "task",
+    "title": "Add PR and issue templates",
+    "feature": "F03",
+    "epic": "E0",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e0"
+    ]
+  },
+  {
+    "id": "T010",
+    "type": "task",
+    "title": "Define fixture format for synthetic graphs, changes and expected impact sets",
+    "feature": "F04",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T011",
+    "type": "task",
+    "title": "Write the 12 conformance scenarios from section 1.3 as failing tests",
+    "feature": "F04",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T012",
+    "type": "task",
+    "title": "Add property test: adding a possible edge never shrinks selection",
+    "feature": "F04",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T013",
+    "type": "task",
+    "title": "Add determinism test: identical inputs yield identical plans",
+    "feature": "F04",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T014",
+    "type": "task",
+    "title": "Define canonical entity IDs and entity types",
+    "feature": "F05",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T015",
+    "type": "task",
+    "title": "Define edge types and Consumer->Dependency direction rule",
+    "feature": "F05",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T016",
+    "type": "task",
+    "title": "Define edge properties: evidence, analyzer version, revision, confidence, validity scope",
+    "feature": "F05",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T017",
+    "type": "task",
+    "title": "Implement in-memory graph with base and head snapshots",
+    "feature": "F06",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T018",
+    "type": "task",
+    "title": "Implement change model: added, modified, deleted, moved, renamed",
+    "feature": "F06",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T019",
+    "type": "task",
+    "title": "Implement content-hash based incremental invalidation",
+    "feature": "F06",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T020",
+    "type": "task",
+    "title": "Implement type-aware reverse-dependency traversal over base and head edges",
+    "feature": "F07",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T021",
+    "type": "task",
+    "title": "Implement T_run = T_changed + T_related + T_fallback selection",
+    "feature": "F07",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T022",
+    "type": "task",
+    "title": "Handle deleted entities via baseline relationships",
+    "feature": "F07",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T023",
+    "type": "task",
+    "title": "Handle new tests with no historical coverage",
+    "feature": "F07",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T024",
+    "type": "task",
+    "title": "Implement completeness status per entity and edge",
+    "feature": "F08",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T025",
+    "type": "task",
+    "title": "Implement fallback expansion to project or suite boundary",
+    "feature": "F08",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T026",
+    "type": "task",
+    "title": "Implement shadow, conservative and optimized modes",
+    "feature": "F08",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T027",
+    "type": "task",
+    "title": "Fail or widen when a required plugin is unavailable",
+    "feature": "F08",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T028",
+    "type": "task",
+    "title": "Define execution plan schema (section 5.3)",
+    "feature": "F09",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T029",
+    "type": "task",
+    "title": "Implement per-test causal paths and provenance",
+    "feature": "F09",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T030",
+    "type": "task",
+    "title": "Implement exclusion explanation stating bounds of analysis",
+    "feature": "F09",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T031",
+    "type": "task",
+    "title": "Distinguish requested test cases from runnable units",
+    "feature": "F09",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T032",
+    "type": "task",
+    "title": "Define gbit.yml schema and validation",
+    "feature": "F10",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T033",
+    "type": "task",
+    "title": "Implement config loading and policy resolution",
+    "feature": "F10",
+    "epic": "E1",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e1"
+    ]
+  },
+  {
+    "id": "T034",
+    "type": "task",
+    "title": "Specify gbit.plugin/v1 JSON-RPC over stdio: initialize, getCapabilities, analyze",
+    "feature": "F11",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T035",
+    "type": "task",
+    "title": "Implement transport, framing, timeouts and cancellation in Gbit.Protocol",
+    "feature": "F11",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T036",
+    "type": "task",
+    "title": "Implement plugin host: lifecycle, version pinning, resource limits",
+    "feature": "F11",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T037",
+    "type": "task",
+    "title": "Write protocol conformance tests runnable against any plugin",
+    "feature": "F11",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T038",
+    "type": "task",
+    "title": "Restrict filesystem and network access for plugin processes",
+    "feature": "F12",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T039",
+    "type": "task",
+    "title": "Strip CI secrets from plugin environment",
+    "feature": "F12",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T040",
+    "type": "task",
+    "title": "Treat repository-defined plugins on untrusted PRs as untrusted",
+    "feature": "F12",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T041",
+    "type": "task",
+    "title": "Design schema: Entities, Relationships, GraphSnapshots, TestInventory, CoverageEvidence, ExecutionHistory, SelectionPlans",
+    "feature": "F13",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T042",
+    "type": "task",
+    "title": "Implement migrations and adjacency indexes",
+    "feature": "F13",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T043",
+    "type": "task",
+    "title": "Benchmark incremental update on a 100,000-node graph",
+    "feature": "F13",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T044",
+    "type": "task",
+    "title": "Implement git revision diff with rename detection",
+    "feature": "F14",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T045",
+    "type": "task",
+    "title": "Implement discovery orchestration across plugins",
+    "feature": "F14",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T046",
+    "type": "task",
+    "title": "Build Roslyn/SCIP based symbol and reference analyzer",
+    "feature": "F15",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T047",
+    "type": "task",
+    "title": "Implement xUnit test discovery with stable test IDs",
+    "feature": "F15",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T048",
+    "type": "task",
+    "title": "Implement runner adapter translating plan to dotnet test filters",
+    "feature": "F15",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T049",
+    "type": "task",
+    "title": "Build SCIP/Tree-sitter based Python analyzer",
+    "feature": "F16",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T050",
+    "type": "task",
+    "title": "Implement pytest discovery with stable test IDs",
+    "feature": "F16",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T051",
+    "type": "task",
+    "title": "Implement runner adapter translating plan to pytest selectors",
+    "feature": "F16",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T052",
+    "type": "task",
+    "title": "Implement gbit init and gbit index --full",
+    "feature": "F17",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T053",
+    "type": "task",
+    "title": "Implement gbit plan and gbit test",
+    "feature": "F17",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T054",
+    "type": "task",
+    "title": "Implement gbit explain and gbit graph --affected",
+    "feature": "F17",
+    "epic": "E2",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e2"
+    ]
+  },
+  {
+    "id": "T055",
+    "type": "task",
+    "title": "Build GitHub Actions wrapper",
+    "feature": "F18",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T056",
+    "type": "task",
+    "title": "Build Azure DevOps wrapper",
+    "feature": "F18",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T057",
+    "type": "task",
+    "title": "Build GitLab CI wrapper",
+    "feature": "F18",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T058",
+    "type": "task",
+    "title": "Record full-suite results and compare with planned subsets",
+    "feature": "F19",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T059",
+    "type": "task",
+    "title": "Implement gbit verify --full",
+    "feature": "F19",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T060",
+    "type": "task",
+    "title": "Store predicted vs actual counts and durations",
+    "feature": "F19",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T061",
+    "type": "task",
+    "title": "Replay historical regressions on reference repositories",
+    "feature": "F20",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T062",
+    "type": "task",
+    "title": "Build mutation injection harness",
+    "feature": "F20",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T063",
+    "type": "task",
+    "title": "Define rollout thresholds and reference repositories",
+    "feature": "F20",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T064",
+    "type": "task",
+    "title": "Compute regression miss rate, selection efficiency, fallback rate, explanation coverage",
+    "feature": "F21",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T065",
+    "type": "task",
+    "title": "Emit OpenTelemetry traces and metrics",
+    "feature": "F21",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T066",
+    "type": "task",
+    "title": "Import and export JUnit XML results",
+    "feature": "F21",
+    "epic": "E3",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e3"
+    ]
+  },
+  {
+    "id": "T067",
+    "type": "task",
+    "title": "OpenAPI contract analyzer",
+    "feature": "F22",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T068",
+    "type": "task",
+    "title": "JSON Schema and database migration analyzers",
+    "feature": "F22",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T069",
+    "type": "task",
+    "title": "Classify public contract changes versus internal implementation changes",
+    "feature": "F22",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T070",
+    "type": "task",
+    "title": "Build TypeScript analyzer",
+    "feature": "F23",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T071",
+    "type": "task",
+    "title": "Implement Jest/Vitest runner adapter",
+    "feature": "F23",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T072",
+    "type": "task",
+    "title": "Generate contract consumer edges for TypeScript clients",
+    "feature": "F23",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T073",
+    "type": "task",
+    "title": "Define evidence collector plugin capability",
+    "feature": "F24",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T074",
+    "type": "task",
+    "title": "Implement per-test coverage contexts for .NET and Python",
+    "feature": "F24",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T075",
+    "type": "task",
+    "title": "Scope runtime evidence by build and environment",
+    "feature": "F24",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T076",
+    "type": "task",
+    "title": "Merge runtime edges into future snapshots",
+    "feature": "F24",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T077",
+    "type": "task",
+    "title": "Enforce computed plan in CI with safe fallback",
+    "feature": "F25",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T078",
+    "type": "task",
+    "title": "Gate optimized mode on validated relationship evidence",
+    "feature": "F25",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T079",
+    "type": "task",
+    "title": "Add local web UI for impact subgraph visualization",
+    "feature": "F25",
+    "epic": "E4",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e4"
+    ]
+  },
+  {
+    "id": "T080",
+    "type": "task",
+    "title": "Model prompts, model configs, MCP tools and workflow transitions as graph entities",
+    "feature": "F26",
+    "epic": "E5",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e5"
+    ]
+  },
+  {
+    "id": "T081",
+    "type": "task",
+    "title": "Add evaluation dataset entities and VALIDATES edges",
+    "feature": "F26",
+    "epic": "E5",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e5"
+    ]
+  },
+  {
+    "id": "T082",
+    "type": "task",
+    "title": "Prototype evaluation runner plugin",
+    "feature": "F26",
+    "epic": "E5",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e5"
+    ]
+  },
+  {
+    "id": "T083",
+    "type": "task",
+    "title": "Evaluate PostgreSQL for centralized graph storage",
+    "feature": "F27",
+    "epic": "E5",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e5"
+    ]
+  },
+  {
+    "id": "T084",
+    "type": "task",
+    "title": "Evaluate gRPC plugin transport for remote execution",
+    "feature": "F27",
+    "epic": "E5",
+    "status": "Todo",
+    "labels": [
+      "task",
+      "e5"
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gbit.Core\Gbit.Core.csproj" />
+    <ProjectReference Include="..\Gbit.Protocol\Gbit.Protocol.csproj" />
+    <ProjectReference Include="..\Gbit.Storage.Sqlite\Gbit.Storage.Sqlite.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>gbit</AssemblyName>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>gbit</ToolCommandName>
+  </PropertyGroup>
+
+</Project>

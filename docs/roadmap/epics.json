@@ -1,0 +1,113 @@
+[
+  {
+    "id": "E0",
+    "type": "epic",
+    "title": "Project foundation",
+    "phase": "Phase 0",
+    "summary": "Repository scaffold, build, CI skeleton and engineering conventions.",
+    "exitCriteria": "Solution builds and tests run in CI on every push.",
+    "features": [
+      "F01",
+      "F02",
+      "F03"
+    ],
+    "labels": [
+      "epic",
+      "e0"
+    ]
+  },
+  {
+    "id": "E1",
+    "type": "epic",
+    "title": "Graph kernel and conformance suite",
+    "phase": "Phase 1",
+    "summary": "Language-neutral typed graph, snapshots, traversal, safety policies, explanation paths, driven by synthetic acceptance tests written first.",
+    "exitCriteria": "All language-neutral selection, versioning, deletion, uncertainty and determinism scenarios pass.",
+    "features": [
+      "F04",
+      "F05",
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "F10"
+    ],
+    "labels": [
+      "epic",
+      "e1"
+    ]
+  },
+  {
+    "id": "E2",
+    "type": "epic",
+    "title": "Two independent language ecosystems",
+    "phase": "Phase 2",
+    "summary": "Plugin protocol plus C#/.NET and Python/pytest analyzers and runners using the identical core planner.",
+    "exitCriteria": "Both ecosystems use the same core planning engine on real repositories with reproducible selected test execution.",
+    "features": [
+      "F11",
+      "F12",
+      "F13",
+      "F14",
+      "F15",
+      "F16",
+      "F17"
+    ],
+    "labels": [
+      "epic",
+      "e2"
+    ]
+  },
+  {
+    "id": "E3",
+    "type": "epic",
+    "title": "CI shadow-mode validation",
+    "phase": "Phase 3",
+    "summary": "Run full suites beside planned subsets, replay historical changes, inject mutations and measure miss rate and savings.",
+    "exitCriteria": "Empirical missed-regression and wall-clock metrics meet an explicit rollout threshold across representative projects.",
+    "features": [
+      "F18",
+      "F19",
+      "F20",
+      "F21"
+    ],
+    "labels": [
+      "epic",
+      "e3"
+    ]
+  },
+  {
+    "id": "E4",
+    "type": "epic",
+    "title": "Cross-language impact and optimized CI",
+    "phase": "Phase 4",
+    "summary": "TypeScript analysis, contract propagation, per-test runtime evidence and enforced conservative selection.",
+    "exitCriteria": "Contract changes select appropriate tests in other languages and CI safely enforces the computed plan.",
+    "features": [
+      "F22",
+      "F23",
+      "F24",
+      "F25"
+    ],
+    "labels": [
+      "epic",
+      "e4"
+    ]
+  },
+  {
+    "id": "E5",
+    "type": "epic",
+    "title": "Change-impact verification platform",
+    "phase": "Future",
+    "summary": "Extend the graph to prompts, model configs, MCP tools, workflows and evaluation datasets. Starts only after E1-E4 validation.",
+    "exitCriteria": "Agent evaluations are selected by changes to prompts, tools, schemas and workflows.",
+    "features": [
+      "F26",
+      "F27"
+    ],
+    "labels": [
+      "epic",
+      "e5"
+    ]
+  }
+]

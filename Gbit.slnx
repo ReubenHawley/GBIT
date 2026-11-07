@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Gbit.Cli/Gbit.Cli.csproj" />
+    <Project Path="src/Gbit.Core/Gbit.Core.csproj" />
+    <Project Path="src/Gbit.Protocol/Gbit.Protocol.csproj" />
+    <Project Path="src/Gbit.Storage.Sqlite/Gbit.Storage.Sqlite.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Gbit.Conformance/Gbit.Conformance.csproj" />
+    <Project Path="tests/Gbit.Core.Tests/Gbit.Core.Tests.csproj" />
+  </Folder>
+</Solution>

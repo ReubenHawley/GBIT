@@ -1,0 +1,5 @@
+# GBIT repository configuration (schema is defined in roadmap task E1-F5).
+apiVersion: gbit/v1
+policy:
+  mode: shadow        # shadow | conservative | optimized
+plugins: []
