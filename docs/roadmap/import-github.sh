@@ -9,11 +9,12 @@ declare -A num
 create() { # id title body labels...
   local id="$1" title="$2" body="$3"; shift 3
   local args=() l
-  for l in "$@"; do gh label create "$l" --repo "$repo" --force >/dev/null 2>&1 || true; args+=(--label "$l"); done
-  local url; url=$(gh issue create --repo "$repo" --title "[$id] $title" --body "$body" "${args[@]}")
+  for l in "$@"; do gh label create "$l" --repo "$repo" --force </dev/null >/dev/null 2>&1 || true; args+=(--label "$l"); done
+  local url; url=$(gh issue create --repo "$repo" --title "[$id] $title" --body "$body" "${args[@]}" </dev/null)
   num[$id]="${url##*/}"
-  [ -n "$project" ] && gh project item-add "$project" --owner "$powner" --url "$url" >/dev/null
+  if [ -n "$project" ]; then gh project item-add "$project" --owner "$powner" --url "$url" </dev/null >/dev/null; fi
   echo "$id -> $url"
+  sleep 1
 }
 
 jq -c '.[]' "$dir/epics.json" | while read -r e; do
