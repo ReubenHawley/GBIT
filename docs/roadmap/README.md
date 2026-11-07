@@ -20,3 +20,9 @@ gh auth login
 ```
 
 Without a project number the issues are only created; with one, they are also added to that GitHub Project.
+
+## Specs
+
+`specs/<ID>.md` holds the full specification for every epic, feature and task (summary, requirements, acceptance criteria, test-first plan, dependencies, definition of done). They are the text of the corresponding GitHub issues. `issue-map.json` maps roadmap IDs to issue numbers.
+
+To change a spec: edit the data in `specs/spec_*.py`, run `python3 -I docs/roadmap/specs/render.py docs/roadmap/issue-map.json`, then update the issue body with `gh issue edit <n> --body-file docs/roadmap/specs/<ID>.md`.
